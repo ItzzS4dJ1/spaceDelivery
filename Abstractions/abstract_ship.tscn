@@ -13,12 +13,15 @@ platform_on_leave = 2
 script = ExtResource("1_m3r21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.25, 0.25)
 shape = SubResource("RectangleShape2D_yb2tv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_pxwtw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.905, 0.905)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true

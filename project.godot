@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Code: SpaceDelivery"
-run/main_scene="res://Abstractions/abstract_ship.tscn"
+run/main_scene="uid://yu5hypbv1y17"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

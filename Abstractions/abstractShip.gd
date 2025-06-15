@@ -8,9 +8,9 @@ var camTween = create_tween()
 
 
 @export var HORIZONTAL_SPEED : float = 200.0
-@export var VERTICAL_SPEED : float = 500.0
-@export var BACKWARD_SPEED : float = 100.0
-@export var rotation_speed : float = TAU * 2
+@export var VERTICAL_SPEED : float = 300.0
+@export var BACKWARD_SPEED : float = 50.0
+@export var rotation_speed : float = TAU * 0.5
 
 var speed = 400
 
@@ -43,6 +43,6 @@ func _process(delta: float) -> void:
 	else: 
 		camTween.tween_property(self,"rotation", deg_to_rad(_rotation), 0.9)
 	if Input.is_action_pressed("in_d"):
-		_rotation -= 5
+		_rotation -= 2.5
 	if Input.is_action_pressed("in_a"):
-		_rotation += 5
+		_rotation += 2.5

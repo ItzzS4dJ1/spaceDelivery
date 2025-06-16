@@ -1,10 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://yu5hypbv1y17"]
+[gd_scene load_steps=9 format=3 uid="uid://yu5hypbv1y17"]
 
-[ext_resource type="Texture2D" uid="uid://cxraypnyc0qb4" path="res://Sprites/ParallaxBG/Nebula Blue.png" id="1_81phd"]
 [ext_resource type="PackedScene" uid="uid://bo52asusidfl0" path="res://Abstractions/abstract_ship.tscn" id="2_qtpbo"]
 [ext_resource type="Texture2D" uid="uid://ddviey0xpd5o" path="res://Sprites/ParallaxBG/Stars-Big_1_2_PC.png" id="2_rxlph"]
 [ext_resource type="Texture2D" uid="uid://770407khu047" path="res://icon.svg" id="3_qtpbo"]
 [ext_resource type="Texture2D" uid="uid://4266vp648gky" path="res://Sprites/ParallaxBG/Stars Small_2.png" id="3_ulv8f"]
+[ext_resource type="Shader" uid="uid://m6jpmqod7312" path="res://space.gdshader" id="6_w5eul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulv8f"]
+shader = ExtResource("6_w5eul")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.002
+shader_parameter/mediumStarAmount = 0.01
+shader_parameter/bigStarAmount = 0.02
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_w5eul"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5fhv"]
+shader = ExtResource("6_w5eul")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.002
+shader_parameter/mediumStarAmount = 0.01
+shader_parameter/bigStarAmount = 0.02
 
 [node name="Space" type="Node2D"]
 
@@ -12,21 +36,27 @@
 scroll_scale = Vector2(2, 2)
 repeat_size = Vector2(1, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="Space"]
-texture = ExtResource("1_81phd")
+[node name="Sprite2D50" type="Sprite2D" parent="Space"]
+material = SubResource("ShaderMaterial_ulv8f")
+scale = Vector2(6070.12, 6196.99)
+texture = SubResource("CanvasTexture_w5eul")
 
 [node name="Stars" type="Parallax2D" parent="."]
+visible = false
 scroll_scale = Vector2(2, 2)
 repeat_size = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Stars"]
+visible = false
 texture = ExtResource("2_rxlph")
 
 [node name="Stars2" type="Parallax2D" parent="."]
+visible = false
 scroll_scale = Vector2(2, 2)
 repeat_size = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Stars2"]
+visible = false
 rotation = 1.5708
 texture = ExtResource("3_ulv8f")
 
@@ -225,5 +255,24 @@ position = Vector2(3164, -4434)
 texture = ExtResource("3_qtpbo")
 
 [node name="Sprite2D49" type="Sprite2D" parent="."]
+z_index = 3
 position = Vector2(3556, -5446)
 texture = ExtResource("3_qtpbo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+z_index = -10
+material = SubResource("ShaderMaterial_b5fhv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -123008.0
+offset_top = -78208.0
+offset_right = -123008.0
+offset_bottom = -78208.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4057.11, 4486.14)

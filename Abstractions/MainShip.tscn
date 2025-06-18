@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxcwexk70hvu0"]
+
+[ext_resource type="PackedScene" uid="uid://bo52asusidfl0" path="res://Abstractions/abstract_ship.tscn" id="1_cx4kq"]
+[ext_resource type="Texture2D" uid="uid://dn6sm7mdls86p" path="res://Sprites/MainShip/Main/Main Ship - Base - Full health.png" id="2_c1eui"]
+
+[node name="abstractShip" instance=ExtResource("1_cx4kq")]
+PREHYPERSPACE_SPEED = 750.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 4.76837e-07)
+scale = Vector2(1, 0.943685)
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0.0461488, 0.0922956)
+scale = Vector2(2, 1.994)
+texture = ExtResource("2_c1eui")

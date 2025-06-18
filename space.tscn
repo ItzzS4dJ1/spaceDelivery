@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://yu5hypbv1y17"]
 
 [ext_resource type="PackedScene" uid="uid://bo52asusidfl0" path="res://Abstractions/abstract_ship.tscn" id="2_qtpbo"]
-[ext_resource type="Texture2D" uid="uid://ddviey0xpd5o" path="res://Sprites/ParallaxBG/Stars-Big_1_2_PC.png" id="2_rxlph"]
+[ext_resource type="Texture2D" uid="uid://de02e8446ft6" path="res://Sprites/ParallaxBG/BackgroundDecorator_1.png" id="2_rxlph"]
 [ext_resource type="Texture2D" uid="uid://770407khu047" path="res://icon.svg" id="3_qtpbo"]
 [ext_resource type="Texture2D" uid="uid://4266vp648gky" path="res://Sprites/ParallaxBG/Stars Small_2.png" id="3_ulv8f"]
 [ext_resource type="Shader" uid="uid://m6jpmqod7312" path="res://space.gdshader" id="6_w5eul"]
@@ -43,12 +43,14 @@ texture = SubResource("CanvasTexture_w5eul")
 
 [node name="Stars" type="Parallax2D" parent="."]
 visible = false
-scroll_scale = Vector2(2, 2)
-repeat_size = Vector2(1, 1)
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(0.5, 0.5)
+autoscroll = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="Stars"]
-visible = false
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_rxlph")
+centered = false
 
 [node name="Stars2" type="Parallax2D" parent="."]
 visible = false
@@ -59,9 +61,6 @@ repeat_size = Vector2(1, 1)
 visible = false
 rotation = 1.5708
 texture = ExtResource("3_ulv8f")
-
-[node name="abstractShip" parent="." instance=ExtResource("2_qtpbo")]
-position = Vector2(-467, -457)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_qtpbo")
@@ -276,3 +275,6 @@ offset_bottom = -78208.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4057.11, 4486.14)
+
+[node name="abstractShip" parent="." instance=ExtResource("2_qtpbo")]
+position = Vector2(-29, -116)

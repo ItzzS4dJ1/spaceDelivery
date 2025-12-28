@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bo52asusidfl0"]
+[gd_scene load_steps=16 format=3 uid="uid://bo52asusidfl0"]
 
 [ext_resource type="Script" uid="uid://dpoqjqu7kdp25" path="res://Abstractions/abstractShip.gd" id="1_m3r21"]
 [ext_resource type="Texture2D" uid="uid://dn6sm7mdls86p" path="res://Sprites/MainShip/Main/Main Ship - Base - Full health.png" id="2_yb2tv"]
@@ -33,13 +33,29 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [],
 "loop": true,
 "name": &"new_animation",
 "speed": 5.0
 }]
+
+[sub_resource type="Theme" id="Theme_yb2tv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovk8h"]
+bg_color = Color(0, 0, 0, 0.25490198)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drxtn"]
+bg_color = Color(0.99999994, 0.13296163, 0.21840122, 1)
+
+[sub_resource type="Theme" id="Theme_56ty6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yb2tv"]
+bg_color = Color(0, 0, 0, 0.25490198)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_56ty6"]
+bg_color = Color(0, 0.7206315, 0.6789399, 1)
 
 [node name="abstractShip" type="CharacterBody2D"]
 texture_filter = 1
@@ -58,11 +74,14 @@ texture = ExtResource("2_yb2tv")
 flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.905, 0.905)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+drag_left_margin = 0.05
+drag_top_margin = 0.05
+drag_right_margin = 0.05
+drag_bottom_margin = 0.05
 
 [node name="Turbine" type="Sprite2D" parent="."]
 z_index = -1
@@ -77,4 +96,44 @@ position = Vector2(-17, 0)
 rotation = 1.5708
 scale = Vector2(1, 1.23)
 sprite_frames = SubResource("SpriteFrames_r82gw")
-frame_progress = 0.00926776
+frame_progress = 0.25332916
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -15.999939
+offset_right = 231.24992
+offset_bottom = 11.000061
+grow_vertical = 0
+scale = Vector2(1.7600005, 0.59999514)
+size_flags_vertical = 8
+theme = SubResource("Theme_yb2tv")
+theme_override_styles/background = SubResource("StyleBoxFlat_ovk8h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_drxtn")
+max_value = 30.0
+value = 15.0
+show_percentage = false
+
+[node name="SpiceBar" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.999939
+offset_right = 381.28687
+offset_bottom = -4.2944946
+grow_vertical = 0
+scale = Vector2(1.0674378, 0.5775012)
+theme = SubResource("Theme_56ty6")
+theme_override_styles/background = SubResource("StyleBoxFlat_yb2tv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_56ty6")
+value = 45.0
+show_percentage = false
+
+[node name="SpiceTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SpiceTimer" to="." method="_on_spice_timer_timeout"]

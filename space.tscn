@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://yu5hypbv1y17"]
+[gd_scene load_steps=10 format=3 uid="uid://yu5hypbv1y17"]
 
 [ext_resource type="PackedScene" uid="uid://bo52asusidfl0" path="res://Abstractions/abstract_ship.tscn" id="2_qtpbo"]
 [ext_resource type="Texture2D" uid="uid://de02e8446ft6" path="res://Sprites/ParallaxBG/BackgroundDecorator_1.png" id="2_rxlph"]
 [ext_resource type="Texture2D" uid="uid://770407khu047" path="res://icon.svg" id="3_qtpbo"]
 [ext_resource type="Texture2D" uid="uid://4266vp648gky" path="res://Sprites/ParallaxBG/Stars Small_2.png" id="3_ulv8f"]
+[ext_resource type="PackedScene" uid="uid://cu5y3epea7rtm" path="res://Planetoids/AurumSun.tscn" id="6_b5fhv"]
 [ext_resource type="Shader" uid="uid://m6jpmqod7312" path="res://space.gdshader" id="6_w5eul"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulv8f"]
@@ -278,3 +279,7 @@ scale = Vector2(4057.11, 4486.14)
 
 [node name="abstractShip" parent="." instance=ExtResource("2_qtpbo")]
 position = Vector2(-29, -116)
+
+[node name="Sun" parent="." instance=ExtResource("6_b5fhv")]
+position = Vector2(2531, -2087.004)
+scale = Vector2(20, 20)
